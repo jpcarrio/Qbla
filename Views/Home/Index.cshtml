@@ -1,0 +1,203 @@
+﻿@model IEnumerable<Qbla.Models.PaymentView>
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+    <div class="text-center">
+        <h1 class="display-4">Dashboard</h1>
+        <hr />
+        <div class="clearfix">&nbsp;</div>
+        <div class="row">
+            <input class="form-control bg-light border-success global_filter" id="global_filter" placeholder="Search for any field..." />
+            <div style="display:none">
+                <input type="checkbox" class="global_filter" id="global_regex">
+                <input type="checkbox" class="global_filter" id="global_smart" checked="checked">
+            </div>
+        </div>
+        <div class="clearfix">&nbsp;</div>
+        <div class="row">
+            <div id="divTable" class="col-md-8 bg-light shadow" style="position:absolute; height:400px; border:1px solid #7a7a7a; z-index:999; overflow:scroll;display:none;">                
+                    <table id="payTable" class="table" width="100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    CaseId
+                                </th>
+                                <th>
+                                    Firstname
+                                </th>                                
+                                <th>
+                                    Lastname
+                                </th>
+                                <th>
+                                    Address
+                                </th>
+                                <th>
+                                    City
+                                </th>
+                                <th>
+                                    Service
+                                </th>
+                                <th>
+                                    Amount
+                                </th>
+                                <th>
+                                    Date
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CaseId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Firstname)
+                                    </td>                                    
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Lastname)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Address)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.City)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Title)
+                                    </td>
+                                    <td>
+                                        @String.Format("${0:N}", item.Amount)
+                                    </td>
+                                    <td>
+                                        @String.Format("{0:MM/dd/yyyy}", item.PayDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-success" asp-controller="Payments" asp-action="Details" asp-route-id="@item.Id">More Info</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card small" style="width: 17rem; height:18rem;">
+                    <span class="fa fa-5x fa-user-secret"></span>
+                    <div class="card-body">
+                        <h5 class="card-title">Add Customer with case</h5>
+                        <p class="card-text">Add customer and the record of your Service at once</p>
+                        <a asp-controller="Customers" asp-action="AddCustomer" class="btn btn-primary">Add Case</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="card small" style="width: 17rem; height:18rem;">
+                    <span class="fa fa-5x fa-user"></span>
+                    <div class="card-body">
+                        <h5 class="card-title">Add Customer</h5>
+                        <p class="card-text">Add customer only. The Payment of your Service can add later</p>
+                        <a asp-controller="Customers" asp-action="Create" class="btn btn-primary">Add Customer</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="card small" style="width: 17rem; height:18rem;">
+                    <span class="fa fa-5x fa-area-chart"></span>
+                    <div class="card-body">
+                        <h5 class="card-title">Customers by Services</h5>
+                        <p class="card-text">Report <br /> Customers grouped by Services</p>
+                        <a asp-controller="Payments" asp-action="CustPayments" class="btn btn-primary">See Report</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card small" style="width: 17rem; height:18rem;">
+                    <span class="fa fa-5x fa-calendar"></span>
+                    <div class="card-body">
+                        <h5 class="card-title">Customers by Date</h5>
+                        <p class="card-text">Report <br /> Customers grouped by Date</p>
+                        <a asp-controller="Payments" asp-action="CustDate" class="btn btn-primary">See Report</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="clearfix">&nbsp;</div>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-3">
+                <div class="card small" style="width: 17rem; height:15rem;">
+                    <span class="fa fa-5x fa-users"></span>
+                    <div class="card-body">
+                        <h5 class="card-title">Customers</h5>
+                        <p class="card-text">Add, Edit or Delete your customers</p>
+                        <a asp-controller="Customers" asp-action="Index" class="btn btn-primary">Customers</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card small" style="width: 17rem; height:15rem;">
+                    <span class="fa fa-5x fa-briefcase"></span>
+                    <div class="card-body">
+                        <h5 class="card-title">Services</h5>
+                        <p class="card-text">Add, Edit or Delete the Services</p>
+                        <a asp-controller="Services" asp-action="Index" class="btn btn-primary">Services</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card small" style="width: 17rem; height:15rem;">
+                    <span class="fa fa-5x fa-dollar"></span>
+                    <div class="card-body">
+                        <h5 class="card-title">Payments</h5>
+                        <p class="card-text">Add, Edit or Delete the payments</p>
+                        <a asp-controller="Payments" asp-action="Index" class="btn btn-primary">Payments</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+
+<script>
+    function filterGlobal() {
+        $('#payTable').DataTable().search(
+            $('#global_filter').val(),
+            $('#global_regex').prop('checked'),
+            $('#global_smart').prop('checked')
+        ).draw();
+    }
+    
+    $(document).ready(function () {
+        $('#payTable').DataTable();
+
+        $('input.global_filter').on('keyup click', function () {            
+            filterGlobal();
+        });
+        
+        $('input.global_filter').on('keyup', function () {  
+            if ($(this).val()) {
+                $('#divTable').show();
+            } else {
+                $('#divTable').hide();
+            }
+        });   
+        
+    });
+</script>
