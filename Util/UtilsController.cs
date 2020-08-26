@@ -22,17 +22,27 @@ namespace Qbla.Util
 
         public string GetCaseId()
         {
-            
-            var PayId = _context.Payments.OrderByDescending(x => x.Id).First().CaseId;
-            var SubCaseId = PayId.Split("-");
-            var sequence = int.Parse(SubCaseId[1]) + 1;
-            PayId = sequence.ToString();
-            while (PayId.Length < 4)
-            {
-                PayId = "0" + PayId;
-            }
+            var PayId = "";
 
-            PayId = DateTime.Today.Year.ToString().Substring(2) + "-" + PayId;
+            if (_context.Payments.Count() > 0)
+            {
+                PayId = _context.Payments.OrderByDescending(x => x.Id).First().CaseId;
+                var SubCaseId = PayId.Split("-");
+                var sequence = int.Parse(SubCaseId[1]) + 1;
+                PayId = sequence.ToString();
+                while (PayId.Length < 4)
+                {
+                    PayId = "0" + PayId;
+                }
+
+                PayId = DateTime.Today.Year.ToString().Substring(2) + "-" + PayId;
+
+                
+            }
+            else
+            {
+                PayId = DateTime.Today.Year.ToString().Substring(2) + "-0001";
+            }
 
             return PayId;
         }
