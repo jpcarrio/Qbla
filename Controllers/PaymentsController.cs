@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Qbla.Data;
 using Qbla.Models;
+using Qbla.Util;
 
 namespace Qbla.Controllers
 {
     public class PaymentsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UtilsController _utils;
 
-        public PaymentsController(ApplicationDbContext context)
+        public PaymentsController(ApplicationDbContext context, UtilsController utilsController)
         {
             _context = context;
+            _utils = utilsController;
         }
 
         [Route("[controller]")]
@@ -74,6 +77,8 @@ namespace Qbla.Controllers
 
             ViewBag.Customers = customers;
             ViewBag.Services = services;
+
+            ViewBag.CaseId = _utils.GetCaseId();
 
             return View();
         }
