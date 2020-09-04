@@ -11,7 +11,8 @@ namespace Qbla.Models
         public int Id { get; set; }
         public string Guid { get; set; }
         [Required]
-        public string Title { get; set; }
+        public string Service { get; set; }
+        public string Form { get; set; }
         public string Description { get; set; }
         public string Content { get; set; }
     }

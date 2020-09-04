@@ -1,9 +1,9 @@
-﻿@model Qbla.Models.CustServices
+﻿@model Qbla.Models.PaymentView
 
 @{
     ViewData["Title"] = "Create";
-   
-    var id = 0;
+
+    var gid = Guid.NewGuid();
 }
 
 <h1>New customer</h1>
@@ -11,12 +11,14 @@
 <div class="row">
     <div class="col-md-12">
         <form asp-action="AddCustomer">
-            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@            
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+
+            <input asp-for="CustomerId" type="hidden" value="@gid" />
             <div class="row">
                 <div class="form-group col-md-4">
-                    <label asp-for="CaseId" class="control-label"></label>
-                    <input asp-for="CaseId" class="form-control" value="@ViewBag.CaseId" />
-                    <span asp-validation-for="CaseId" class="text-danger"></span>
+                    <label asp-for="CustomerId" class="control-label"></label>
+                    <input asp-for="CustomerId" class="form-control" value="@ViewBag.CaseId" />
+                    <span asp-validation-for="CustomerId" class="text-danger"></span>
                 </div>
             </div>
 
@@ -325,23 +327,40 @@
                     <span asp-validation-for="MigrationStatus" class="text-danger"></span>
                 </div>
             </div>
-            <div class="clearfix">&nbsp;</div>            
-            <p>
-                <a class="btn btn-warning pull-right" onclick="AddService()">Add Service</a>
-                <hr />
-            </p>
-            @if (ViewBag.Error == true)
-            { 
-                <div class="alert-warning" style="padding:10px;">
-                    <h6>There are information to fill below. Service and Amount are mandatories</h6>
-                </div>
-            }
             <div class="clearfix">&nbsp;</div>
+            <hr />
+            <div class="row">
 
-            <div id="ServiceItem">
 
-            </div>            
+                <!-- /////////////////////////PAYMENT////////////////////////////////////-->
 
+                <div class="form-group col-md-4">
+                    <label asp-for="ServiceId" class="control-label">Service</label>
+
+                    <select asp-for="ServiceId" class="form-control">
+                        @foreach (var service in ViewBag.Services)
+                        {
+                            <option value="@service.Guid">@service.Title</option>
+                        }
+                    </select>
+
+                    <span asp-validation-for="ServiceId" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Amount" class="control-label"></label>
+                    <input asp-for="Amount" class="form-control" />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="PayDate" class="control-label"></label>
+                    <input type="date" asp-for="PayDate" class="form-control" />
+                    <span asp-validation-for="PayDate" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-12">
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea asp-for="Description" class="form-control" ></textarea>                    
+                </div>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Add Customer" class="btn btn-primary" />
             </div>
@@ -352,26 +371,6 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
-<script>
-    var id = 0;
-
-    function AddService()
-    {
-        $.ajax({
-            type: "GET",
-            url: "../Customers/ServiceItem/"+id++,
-            async: false,
-            success: function (text) {
-                response = text;
-            }
-        });
-        $('#ServiceItem').prepend(response);       
-    }
-
-   
-
-</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

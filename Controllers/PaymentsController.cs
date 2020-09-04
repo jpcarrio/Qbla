@@ -76,9 +76,7 @@ namespace Qbla.Controllers
             services = _context.Services.ToList();
 
             ViewBag.Customers = customers;
-            ViewBag.Services = services;
-
-            ViewBag.CaseId = _utils.GetCaseId();
+            ViewBag.Services = services;            
 
             return View();
         }
@@ -88,7 +86,7 @@ namespace Qbla.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateAsync([Bind("Id,Guid,CustomerId,ServiceId,Amount,PayDate,Description")] Payments payments)
+        public async Task<IActionResult> CreateAsync([Bind("Id,CustomerId,ServiceId,Beneficiary,Amount,PayDate,Description")] Payments payments)
         {
             if (ModelState.IsValid)
             {               
@@ -116,7 +114,7 @@ namespace Qbla.Controllers
                 return NotFound();
             }
 
-            Payments payments = await _context.Payments.FindAsync(id);
+            PaymentView payments = await _context.PaymentView.FindAsync(id);
             if (payments == null)
             {
                 return NotFound();
@@ -129,7 +127,7 @@ namespace Qbla.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditAsync(int id, [Bind("Id,Guid,CustomerId,ServiceId,Amount,PayDate,Description")] Payments payments)
+        public async Task<IActionResult> EditAsync(int id, [Bind("Id,CustomerId,ServiceId,Beneficiary,Amount,PayDate,Description")] Payments payments)
         {
             if (id != payments.Id)
             {

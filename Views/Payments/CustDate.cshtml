@@ -3,77 +3,69 @@
     ViewData["Title"] = "Customers by Date";
 }
 
-<h1>Customers by Services</h1>
+    <h3>Customers by Date</h3>
 
-<div class="alert alert-warning">
-    <h5>Click to Show or Hide a column:</h5>
+    <div class="alert alert-warning">
+        <h5>Click to Show or Hide a column:</h5>
 
-    <div class="form-check-inline">
-        <div class="custom-control custom-switch" style="width:140px;">
-            <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch1" data-column="0" checked>
-            <label class="custom-control-label" for="customSwitch1">FirstName</label>
+        <div class="form-check-inline">
+            <div class="custom-control custom-switch" style="width:140px;">
+                <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch1" data-column="0" checked>
+                <label class="custom-control-label" for="customSwitch1">FirstName</label>
+            </div>
+            <div class="custom-control custom-switch" style="width:140px;">
+                <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch2" data-column="1" checked>
+                <label class="custom-control-label" for="customSwitch2">MiddleName</label>
+            </div>
+            <div class="custom-control custom-switch" style="width:140px;">
+                <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch3" data-column="2" checked>
+                <label class="custom-control-label" for="customSwitch3">LastName</label>
+            </div>
+            <div class="custom-control custom-switch" style="width:140px;">
+                <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch4" data-column="3" checked>
+                <label class="custom-control-label" for="customSwitch4">Address</label>
+            </div>
+            <div class="custom-control custom-switch" style="width:140px;">
+                <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch5" data-column="4" checked>
+                <label class="custom-control-label" for="customSwitch5">City</label>
+            </div>
+            <div class="custom-control custom-switch" style="width:140px;">
+                <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch6" data-column="5" checked>
+                <label class="custom-control-label" for="customSwitch6">Zipcode</label>
+            </div>
+            <div class="custom-control custom-switch" style="width:140px;">
+                <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch7" data-column="6" checked>
+                <label class="custom-control-label" for="customSwitch7">Phone</label>
+            </div>
+            <div class="custom-control custom-switch" style="width:140px;">
+                <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch8" data-column="7" checked>
+                <label class="custom-control-label" for="customSwitch8">Email</label>
+            </div>
         </div>
-        <div class="custom-control custom-switch" style="width:140px;">
-            <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch2" data-column="1" checked>
-            <label class="custom-control-label" for="customSwitch2">MiddleName</label>
+
+        <div class="form-check-inline">
+            <div class="custom-control custom-switch" style="width:140px;">
+                <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch9" data-column="8" checked>
+                <label class="custom-control-label" for="customSwitch9">Birth Country</label>
+            </div>
+            <div class="custom-control custom-switch" style="width:140px;">
+                <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch10" data-column="9" checked>
+                <label class="custom-control-label" for="customSwitch10">Status</label>
+            </div>
+            <div class="custom-control custom-switch" style="width:140px;">
+                <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch12" data-column="11" checked>
+                <label class="custom-control-label" for="customSwitch12">Amount</label>
+            </div>
+            <div class="custom-control custom-switch" style="width:140px;">
+                <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch14" data-column="13" checked>
+                <label class="custom-control-label" for="customSwitch14">Description</label>
+            </div>
+            <div class="custom-control custom-switch" style="width:140px;">
+                <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch15" data-column="14" checked>
+                <label class="custom-control-label" for="customSwitch15">Form</label>
+            </div>
         </div>
-        <div class="custom-control custom-switch" style="width:140px;">
-            <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch3" data-column="2" checked>
-            <label class="custom-control-label" for="customSwitch3">LastName</label>
-        </div>
-        <div class="custom-control custom-switch" style="width:140px;">
-            <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch4" data-column="3" checked>
-            <label class="custom-control-label" for="customSwitch4">Address</label>
-        </div>
-        <div class="custom-control custom-switch" style="width:140px;">
-            <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch5" data-column="4" checked>
-            <label class="custom-control-label" for="customSwitch5">City</label>
-        </div>
-        <div class="custom-control custom-switch" style="width:140px;">
-            <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch6" data-column="5" checked>
-            <label class="custom-control-label" for="customSwitch6">Zipcode</label>
-        </div>
-        <div class="custom-control custom-switch" style="width:140px;">
-            <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch7" data-column="6" checked>
-            <label class="custom-control-label" for="customSwitch7">Phone</label>
-        </div>
-        <div class="custom-control custom-switch" style="width:140px;">
-            <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch8" data-column="7" checked>
-            <label class="custom-control-label" for="customSwitch8">Email</label>
-        </div>        
     </div>
-    
-    <div class="form-check-inline">
-        <div class="custom-control custom-switch" style="width:140px;">
-            <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch9" data-column="8" checked>
-            <label class="custom-control-label" for="customSwitch9">SS</label>
-        </div>
-        <div class="custom-control custom-switch" style="width:140px;">
-            <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch10" data-column="9" checked>
-            <label class="custom-control-label" for="customSwitch10">Alien</label>
-        </div>
-        <div class="custom-control custom-switch" style="width:140px;">
-            <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch11" data-column="10" checked>
-            <label class="custom-control-label" for="customSwitch11">Birth Country</label>
-        </div>
-        <div class="custom-control custom-switch" style="width:140px;">
-            <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch12" data-column="11" checked>
-            <label class="custom-control-label" for="customSwitch12">Status</label>
-        </div>
-        <div class="custom-control custom-switch" style="width:140px;">
-            <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch13" data-column="13" checked>
-            <label class="custom-control-label" for="customSwitch13">Amount</label>
-        </div>
-        <div class="custom-control custom-switch" style="width:140px;">
-            <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch14" data-column="14" checked>
-            <label class="custom-control-label" for="customSwitch14">Date</label>
-        </div>
-        <div class="custom-control custom-switch" style="width:140px;">
-            <input type="checkbox" class="custom-control-input toggle-vis" id="customSwitch15" data-column="15" checked>
-            <label class="custom-control-label" for="customSwitch15">Description</label>
-        </div>
-    </div>    
-</div>
 
 <div class="row">
     <div class="col-md-12">
@@ -105,19 +97,13 @@
                         @Html.DisplayNameFor(model => model.Email)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.SS)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Alien)
-                    </th>
-                    <th>
                         @Html.DisplayNameFor(model => model.BirthCountry)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.MigrationStatus)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Title)
+                        Service
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Amount)
@@ -128,66 +114,66 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Description)
                     </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Form)
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Firstname)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Middlename)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Lastname)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Address)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.City)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Zipcode)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Phone)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SS)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Alien)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.BirthCountry)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MigrationStatus)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </td>
-                        <td>
-                            @String.Format("${0:N}", item.Amount)
-                        </td>
-                        <td>
-                            @String.Format("{0:MM/dd/yyyy}", item.PayDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Firstname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Middlename)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lastname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Zipcode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BirthCountry)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MigrationStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Service)
+                    </td>
+                    <td>
+                        @String.Format("${0:N}", item.Amount)
+                    </td>
+                    <td>
+                        @String.Format("{0:MM/dd/yyyy}", item.PayDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Form)
+                    </td>
+                </tr>
                 }
             </tbody>
             <tfoot>
                 <tr>
-                    <th colspan="13" style="text-align:right">Total:</th>
+                    <th colspan="11" style="text-align:right">Total:</th>
                     <th></th>
                 </tr>
             </tfoot>
@@ -205,7 +191,7 @@
 
 <script>
     $(document).ready(function () {
-        var groupColumn = 14;
+        var groupColumn = 12;
         var table = $('#payTable').DataTable({
             "columnDefs": [
                 { "visible": false, "targets": groupColumn }
@@ -227,7 +213,7 @@
 
                 // Total over all pages
                 total = api
-                    .column(13)
+                    .column(11)
                     .data()
                     .reduce(function (a, b) {
                         return intVal(a) + intVal(b);
@@ -235,15 +221,15 @@
 
                 // Total over this page
                 pageTotal = api
-                    .column(13, { page: 'current' })
+                    .column(11, { page: 'current' })
                     .data()
                     .reduce(function (a, b) {
                         return intVal(a) + intVal(b);
                     }, 0);
 
                 // Update footer
-                $(api.column(13).footer()).html(
-                    '$' + pageTotal + ' ( $' + total + ' total)'
+                $(api.column(11).footer()).html(
+                    '$' + pageTotal //+ ' ( $' + total + ' total)'
                 );
             },
             "order": [[groupColumn, 'asc']],

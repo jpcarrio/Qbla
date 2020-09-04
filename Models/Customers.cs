@@ -5,7 +5,7 @@ namespace Qbla.Models
     public class Customers
     {
         public int Id { get; set; }
-        public string Guid { get; set; }
+        public string CaseId { get; set; }
         [Required]
         public string Firstname { get; set; }
         public string Middlename { get; set; }
@@ -19,9 +19,7 @@ namespace Qbla.Models
         public string Zipcode { get; set; }
         [Required]
         public string Phone { get; set; }
-        public string Email { get; set; }
-        public string SS { get; set; }
-        public string Alien { get; set; }
+        public string Email { get; set; }        
         [Required]
         public string BirthCountry { get; set; }
         [Required]

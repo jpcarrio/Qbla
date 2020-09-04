@@ -11,10 +11,10 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CaseId)
+            CaseId
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CaseId)
+            @Html.DisplayFor(model => model.CustomerId)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Firstname)
@@ -53,18 +53,6 @@
             @Html.DisplayFor(model => model.Zipcode)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SS)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SS)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Alien)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Alien)
-        </dd>
-        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.BirthCountry)
         </dt>
         <dd class="col-sm-10">
@@ -80,7 +68,19 @@
             Service
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Title)
+            @Html.DisplayFor(model => model.Service)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Form)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Form)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Beneficiary)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Beneficiary)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Amount)

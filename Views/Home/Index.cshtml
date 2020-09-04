@@ -55,7 +55,7 @@
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.CaseId)
+                                    @Html.DisplayFor(modelItem => item.CustomerId)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Firstname)
@@ -70,7 +70,7 @@
                                     @Html.DisplayFor(modelItem => item.City)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Title)
+                                    @Html.DisplayFor(modelItem => item.Service)
                                 </td>
                                 <td>
                                     @String.Format("${0:N}", item.Amount)
@@ -96,8 +96,8 @@
                 <div class="card small">
                     <span class="fa fa-4x fa-user-secret"></span>
                     <div class="card-body">
-                        <h5 class="card-title">Add Customer with case</h5>
-                        <p class="card-text">Add customer and Case at once</p>
+                        <h5 class="card-title">Add Customer</h5>
+                        <p class="card-text">Add a new Customer and Services at once</p>
                         <a asp-controller="Customers" asp-action="AddCustomer" class="btn btn-primary">Add Case</a>
                     </div>
                 </div>
@@ -105,21 +105,32 @@
 
             <div class="col-lg-3" style="min-height:16rem;">
                 <div class="card small">
-                    <span class="fa fa-4x fa-user"></span>
+                    <span class="fa fa-4x fa-dollar"></span>
                     <div class="card-body">
-                        <h5 class="card-title">Add Customer</h5>
-                        <p class="card-text">Add customer only. The Case can be added later</p>
-                        <a asp-controller="Customers" asp-action="Create" class="btn btn-primary">Add Customer</a>
+                        <h5 class="card-title">Add Payment</h5>
+                        <p class="card-text">Add Payment for Service <br /> to existing Case</p>
+                        <a asp-controller="Payments" asp-action="Create" class="btn btn-primary">Add Payment</a>
                     </div>
                 </div>
             </div>
+
+            @*<div class="col-lg-3" style="min-height:16rem;">
+            <div class="card small">
+                <span class="fa fa-4x fa-user"></span>
+                <div class="card-body">
+                    <h5 class="card-title">Add Customer</h5>
+                    <p class="card-text">Add customer only. The Case can be added later</p>
+                    <a asp-controller="Customers" asp-action="Create" class="btn btn-primary">Add Customer</a>
+                </div>
+            </div>
+        </div>*@
 
             <div class="col-lg-3" style="min-height:16rem;">
                 <div class="card small">
                     <span class="fa fa-4x fa-area-chart"></span>
                     <div class="card-body">
                         <h5 class="card-title">Customers by Services</h5>
-                        <p class="card-text">Report <br /> Customers grouped by Services</p>
+                        <p class="card-text">Report <br /> Customers by Services</p>
                         <a asp-controller="Payments" asp-action="CustPayments" class="btn btn-primary">See Report</a>
                     </div>
                 </div>
@@ -129,7 +140,7 @@
                     <span class="fa fa-4x fa-calendar"></span>
                     <div class="card-body">
                         <h5 class="card-title">Customers by Date</h5>
-                        <p class="card-text">Report <br /> Customers grouped by Date</p>
+                        <p class="card-text">Report <br /> Customers by Date</p>
                         <a asp-controller="Payments" asp-action="CustDate" class="btn btn-primary">See Report</a>
                     </div>
                 </div>
@@ -163,7 +174,7 @@
             </div>
             <div class="col-lg-3">
                 <div class="card small">
-                    <span class="fa fa-4x fa-dollar"></span>
+                    <span class="fa fa-4x fa-bank"></span>
                     <div class="card-body">
                         <h5 class="card-title">Payments</h5>
                         <p class="card-text">Add, Edit or Delete the payments</p>

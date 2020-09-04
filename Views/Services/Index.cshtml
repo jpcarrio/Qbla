@@ -16,7 +16,10 @@
                 Service Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayNameFor(model => model.Service)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Form)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
@@ -35,7 +38,10 @@
                 @Html.DisplayFor(modelItem => item.Guid)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Title)
+                @Html.DisplayFor(modelItem => item.Service)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Form)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)

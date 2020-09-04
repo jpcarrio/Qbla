@@ -1,0 +1,50 @@
+﻿@{
+    var id = ViewBag.Id;
+    Layout = null;
+
+
+    var myStyle = "";
+    if (id % 2 == 0)
+    {
+        myStyle = "background:#f2f2f2;";
+    }
+    else
+    {
+        myStyle = "background:transparent;";
+    }
+}
+
+<hr />
+<div class="row" style="@myStyle">
+    <!-- /////////////////////////PAYMENT////////////////////////////////////-->
+
+    <div class="form-group col-md-4">
+        <label for="Payments[@id].ServiceId" class="control-label">Service</label>
+
+        <select name="Payments[@id].ServiceId" class="form-control">
+            @foreach (var service in ViewBag.Services)
+            {
+                <option value="@service.Guid">@service.Service</option>
+            }
+        </select>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="Payments[@id].Beneficiary" class="control-label">Beneficiary</label>
+        <input name="Payments[@id].Beneficiary" class="form-control" />
+    </div>
+    <div class="form-group col-md-4">
+        <label for="Payments[@id].Amount" class="control-label">Amount</label>
+        <input name="Payments[@id].Amount" class="form-control" />
+        <span validation-for="Payments[@id].Amount" class="text-danger"></span>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="Payments[@id].PayDate" class="control-label">Date</label>
+        <input type="date" name="Payments[@id].PayDate" class="form-control" />
+    </div>
+    <div class="form-group col-md-12">
+        <label for="Payments[@id].Description" class="control-label">Description</label>
+        <textarea name="Payments[@id].Description" class="form-control"></textarea>
+    </div>
+</div>
+
+ 

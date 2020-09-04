@@ -24,9 +24,9 @@ namespace Qbla.Util
         {
             var PayId = "";
 
-            if (_context.Payments.Count() > 0)
+            if (_context.Customers.Count() > 0)
             {
-                PayId = _context.Payments.OrderByDescending(x => x.Id).First().CaseId;
+                PayId = _context.Customers.OrderByDescending(x => x.Id).First().CaseId;
                 var SubCaseId = PayId.Split("-");
                 var sequence = int.Parse(SubCaseId[1]) + 1;
                 PayId = sequence.ToString();

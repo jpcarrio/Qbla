@@ -49,6 +49,8 @@ namespace Qbla.Controllers
         // GET: Customers/Create
         public IActionResult Create()
         {
+            ViewBag.CaseId = _utils.GetCaseId();
+
             return View();
         }
 
@@ -57,13 +59,10 @@ namespace Qbla.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateAsync([Bind("Id,Guid,Firstname,Middlename,Lastname,Address,City,Zipcode,Phone,Email,SS,Alien,BirthCountry,MigrationStatus")] Customers customers)
+        public async Task<IActionResult> CreateAsync([Bind("Id,CaseId,Firstname,Middlename,Lastname,Address,City,Zipcode,Phone,Email,BirthCountry,MigrationStatus")] Customers customers)
         {
             if (ModelState.IsValid)
             {
-                var gid = Guid.NewGuid();
-                customers.Guid = gid.ToString();
-
                 _context.Add(customers);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -92,7 +91,7 @@ namespace Qbla.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditAsync(int id, [Bind("Id,Guid,Firstname,Middlename,Lastname,Address,City,Zipcode,Phone,Email,SS,Alien,BirthCountry,MigrationStatus")] Customers customers)
+        public async Task<IActionResult> EditAsync(int id, [Bind("Id,Guid,Firstname,Middlename,Lastname,Address,City,Zipcode,Phone,Email,BirthCountry,MigrationStatus")] Customers customers)
         {
             if (id != customers.Id)
             {
@@ -172,24 +171,27 @@ namespace Qbla.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddCustomerAsync(PaymentView payment)
+        public async Task<IActionResult> AddCustomerAsync(CustServices payment)
         {
             if (ModelState.IsValid)
             {
-                var gid = Guid.NewGuid();
-                var custId = gid.ToString();
+                var CaseId = "";
 
-                var record = _context.PaymentView.Where(x => x.Firstname == payment.Firstname && x.Lastname == payment.Lastname && x.Address == payment.Address || x.Email == payment.Email).ToList();
+                var record = _context.PaymentView.Where(x => x.Firstname == payment.Firstname &&
+                                                        x.Lastname == payment.Lastname &&
+                                                        x.Address == payment.Address ||
+                                                        x.Email == payment.Email && !String.IsNullOrEmpty(x.Email)).ToList();
 
                 if (record.Count > 0)
                 {
-                    custId = record[0].CustomerId.ToString();
+                    CaseId = record[0].CustomerId.ToString();
                 }
                 else
                 {
+                    CaseId = payment.CaseId;
                     var cust = new Customers
                     {
-                        Guid = gid.ToString(),
+                        CaseId = payment.CaseId,
                         Firstname = payment.Firstname,
                         Middlename = payment.Middlename,
                         Lastname = payment.Lastname,
@@ -198,33 +200,51 @@ namespace Qbla.Controllers
                         Zipcode = payment.Zipcode,
                         Phone = payment.Phone,
                         Email = payment.Email,
-                        SS = payment.SS,
-                        Alien = payment.Alien,
                         BirthCountry = payment.BirthCountry,
                         MigrationStatus = payment.MigrationStatus
                     };
 
                     _context.Add(cust);
                 }
-                
-                                
-                var pay = new Payments
+
+                foreach (Payments paymentItem in payment.Payments)
                 {
-                    CaseId = payment.CaseId,
-                    CustomerId = custId,
-                    ServiceId = payment.ServiceId,
-                    Amount = payment.Amount,
-                    PayDate = payment.PayDate,
-                    Description = payment.Description
-                };
-                
-                _context.Add(pay);
+                    var pay = new Payments
+                    {
+                        CustomerId = CaseId,
+                        ServiceId = paymentItem.ServiceId,
+                        Amount = paymentItem.Amount,
+                        Beneficiary = paymentItem.Beneficiary,
+                        PayDate = paymentItem.PayDate,
+                        Description = paymentItem.Description
+                    };
+
+                    _context.Add(pay);
+                }
 
                 await _context.SaveChangesAsync();
-                
-                return RedirectToAction(nameof(Index));
+
+                return RedirectToAction("AddCustomer");
+            }
+            else
+            {
+                ViewBag.Error = true;
             }
             return View();
+        }
+
+        [HttpGet]       
+        public IActionResult ServiceItem(int id)
+        {
+            var services = new List<Services>();
+            services = _context.Services.ToList();
+
+            ViewBag.Services = services;
+            ViewBag.Id = id;
+
+            var pv = new PaymentView();
+
+            return View(pv);
         }
     }
 }

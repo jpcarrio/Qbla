@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Create";
-    var gid = Guid.NewGuid();
 }
 
 <h1>New customer</h1>
@@ -10,8 +9,14 @@
 <div class="row">
     <div class="col-md-12">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Guid" value="@gid"/>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>            
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label asp-for="CaseId" class="control-label"></label>
+                    <input asp-for="CaseId" class="form-control" value="@ViewBag.CaseId"/>
+                    <span asp-validation-for="CaseId" class="text-danger"></span>
+                </div>
+            </div>
             <div class="row">
                 <div class="form-group col-md-4">
                     <label asp-for="Firstname" class="control-label"></label>
@@ -59,19 +64,7 @@
                     <input asp-for="Email" class="form-control" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-4">
-                    <label asp-for="SS" class="control-label"></label>
-                    <input asp-for="SS" class="form-control" />
-                    <span asp-validation-for="SS" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-4">
-                    <label asp-for="Alien" class="control-label"></label>
-                    <input asp-for="Alien" class="form-control" />
-                    <span asp-validation-for="Alien" class="text-danger"></span>
-                </div>
-            </div>            
+            </div>                        
             <div class="row">
                 <div class="form-group col-md-4">
                     <label asp-for="BirthCountry" class="control-label"></label>                    
