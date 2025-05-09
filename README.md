@@ -1,3 +1,2 @@
 # Qbla
- Qbla dashboard
-Web Application using .NET MVC with Razor pages
+Dashboard using .NET MVC with Razor pages
